@@ -9,7 +9,7 @@
 namespace yiiext\storage\upyun;
 
 
-use phplib\net\CUrl;
+use phpplus\net\CUrl;
 
 class UpYunClient
 {
