@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f173ea9d420da252d208db3f371c7a7",
+    "hash": "45ab7bd68ec32d1eb9241e2b50d61f2d",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -458,7 +458,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cdcchen/php-plus.git",
-                "reference": "c3d9cade2f45bfb4afcd6865009ea8b7f6960b41",
+                "reference": "3e24cfa359f7ac60f5ac201c71ba08259cf18b2f",
                 "mirrors": [
                     {
                         "url": "/%package%/%normalizedUrl%.%type%",
@@ -468,8 +468,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cdcchen/php-plus/zipball/c3d9cade2f45bfb4afcd6865009ea8b7f6960b41",
-                "reference": "c3d9cade2f45bfb4afcd6865009ea8b7f6960b41",
+                "url": "https://api.github.com/repos/cdcchen/php-plus/zipball/3e24cfa359f7ac60f5ac201c71ba08259cf18b2f",
+                "reference": "3e24cfa359f7ac60f5ac201c71ba08259cf18b2f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -483,6 +483,10 @@
             },
             "type": "php-lib",
             "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                },
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -507,7 +511,7 @@
             "keywords": [
                 "php plus"
             ],
-            "time": "2015-05-25 09:53:00"
+            "time": "2015-05-25 10:21:20"
         }
     ],
     "aliases": [],

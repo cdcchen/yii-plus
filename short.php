@@ -51,6 +51,15 @@ function user()
 }
 
 /**
+ * return the web user identity
+ * @return null|\yii\web\IdentityInterface|\common\models\User
+ */
+function identity()
+{
+    return app()->user->identity;
+}
+
+/**
  * Returns the view object.
  * @return \yii\web\View the view application component that is used to render various view files.
  */
