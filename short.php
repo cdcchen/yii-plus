@@ -52,7 +52,7 @@ function user()
 
 /**
  * return the web user identity
- * @return null|\yii\web\IdentityInterface|\common\models\User
+ * @return null|\yii\web\IdentityInterface|\common\models\User|\app\models\User
  */
 function identity()
 {
@@ -261,13 +261,10 @@ function buildUrlManager($key, $current, $managers)
     else
         $manager = $managers[$key];
 
-    if ($key === $current) {
-        foreach ($manager['rules'] as $index => $rule) {
-            if (isset($rule['prefix']))
-                $managers[$key]['rules'][$index]['prefix'] = '';
-        }
-    }
-    return $managers[$key];
+    if ($key === $current)
+        unset($manager['ruleConfig']['host']);
+
+    return $manager;
 }
 
 /**
