@@ -254,7 +254,7 @@ function aurl($params, $urlManager = null, $scheme = null)
  * @param array $managers
  * @return array
  */
-function buildUrlManager($key, $current, $managers)
+function buildUrlManager($key, $managers, $current = null)
 {
     if (!isset($managers[$key]))
         throw new InvalidArgumentException();
