@@ -238,13 +238,12 @@ class UpYunClient
     private function buildHeaders($method, $path, $length = 0)
     {
         $uri = $this->buildRequestPath($path);
-        $method = strtoupper($method);
         $date = $this->getDate();
         $length = (int)$length;
         $sign = $this->generateSignature($method, $uri, $date, $length);
 
         return [
-            'Expect: ',
+            'Expect:',
             "Authorization: {$sign}",
             "Date: {$date}",
             "Content-Length: {$length}",

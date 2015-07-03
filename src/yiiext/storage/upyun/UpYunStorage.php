@@ -122,12 +122,6 @@ class UpYunStorage extends Storage
         if (@file_exists($fileName) && @is_file($fileName) && @is_readable($fileName))
             $fileName = fopen($fileName, 'rb');
 
-//        try {
-            return $this->_handle->writeFile($filePath, $fileName, $opts, $this->autoMkDir);
-//        }
-//        catch (\Exception $e) {
-//            throw new $e->getMessage();
-//            return false;
-//        }
+        return $this->_handle->writeFile($filePath, $fileName, $opts, $this->autoMkDir);
     }
 }
