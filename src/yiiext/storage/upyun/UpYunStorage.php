@@ -49,9 +49,9 @@ class UpYunStorage extends Storage
     public $timeout = 60;
 
     /**
-     * @var null|array
+     * @var array
      */
-    protected $_options;
+    protected $_options = [];
 
     /**
      * 又拍云api接口地址
@@ -81,7 +81,7 @@ class UpYunStorage extends Storage
 
     public function resetOption()
     {
-        $this->_options = null;
+        $this->_options = [];
         return $this;
     }
 
@@ -111,7 +111,7 @@ class UpYunStorage extends Storage
         return $this->_handle->readDir($path);
     }
 
-    protected function putFile($filePath, $fileName, $opts = null)
+    protected function putFile($filePath, $fileName, $opts = [])
     {
         if (empty($fileName))
             throw new \InvalidArgumentException('fileName is required.');
@@ -123,7 +123,7 @@ class UpYunStorage extends Storage
             $fileName = fopen($fileName, 'rb');
 
 //        try {
-            $result =  $this->_handle->writeFile($filePath, $fileName, $this->autoMkDir, $opts);
+            $result =  $this->_handle->writeFile($filePath, $fileName, $opts, $this->autoMkDir);
             if (is_array($result)) {
                 $image['width'] = (int)$result['x-upyun-width'];
                 $image['height'] = (int)$result['x-upyun-height'];
