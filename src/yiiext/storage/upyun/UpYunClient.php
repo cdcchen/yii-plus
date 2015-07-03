@@ -240,12 +240,14 @@ class UpYunClient
         $uri = $this->buildRequestPath($path);
         $method = strtoupper($method);
         $date = $this->getDate();
-        $sign = $this->generateSignature($method, $uri, $date, (int)$length);
+        $length = (int)$length;
+        $sign = $this->generateSignature($method, $uri, $date, $length);
 
         return [
-            'Expect:',
+            'Expect: ',
             "Authorization: {$sign}",
             "Date: {$date}",
+            "Content-Length: {$length}",
         ];
     }
 
