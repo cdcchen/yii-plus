@@ -89,7 +89,6 @@ class UpYunClient
 
         if ($this->getCurl()->getErrno() === 0) {
             $info = $this->getCurl()->getResponseHeaders();
-            var_dump($this->getCurl()->getBody());
             return [
                 'width' => (int)$info['x-upyun-width'],
                 'height' => (int)$info['x-upyun-height'],
@@ -221,7 +220,6 @@ class UpYunClient
 
         if ($code === 200) return true;
 
-        var_dump($code);exit;
         throw new \Exception('request error', $code);
 
     }

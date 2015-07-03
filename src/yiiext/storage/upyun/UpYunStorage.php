@@ -123,16 +123,7 @@ class UpYunStorage extends Storage
             $fileName = fopen($fileName, 'rb');
 
 //        try {
-            $result =  $this->_handle->writeFile($filePath, $fileName, $opts, $this->autoMkDir);
-            if (is_array($result)) {
-                $image['width'] = (int)$result['x-upyun-width'];
-                $image['height'] = (int)$result['x-upyun-height'];
-                $image['type'] = $result['x-upyun-file-type'];
-                $image['frames'] = $result['x-upyun-frames'];
-                return $image;
-            }
-            else
-                return $result;
+            return $this->_handle->writeFile($filePath, $fileName, $opts, $this->autoMkDir);
 //        }
 //        catch (\Exception $e) {
 //            throw new $e->getMessage();
