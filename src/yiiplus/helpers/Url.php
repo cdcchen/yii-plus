@@ -4,7 +4,7 @@ namespace yiiplus\helpers;
 use Yii;
 use yii\web\UrlManager;
 
-class BaseUrl extends \yii\helpers\BaseUrl
+class Url extends \yii\helpers\BaseUrl
 {
     public static function toRoute($route, $scheme = false, $urlManager = null)
     {
