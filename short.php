@@ -283,7 +283,7 @@ function alias($alias, $throwException = true)
  */
 function staticUrl($url)
 {
-    if (stripos($url, 'http') === 0)
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
         return $url;
     else
         return $url ? rtrim(alias('@static'), '/') . '/' . ltrim($url, '/') : '';
