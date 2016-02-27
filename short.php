@@ -44,8 +44,18 @@ function session()
 /**
  * Returns the user object.
  * @return \yii\web\User | \yiiplus\web\User the application instance
+ * @deprecated
  */
 function user()
+{
+    return app()->getUser();
+}
+
+/**
+ * Returns the user object.
+ * @return \yii\web\User | \yiiplus\web\User the application instance
+ */
+function appUser()
 {
     return app()->getUser();
 }
