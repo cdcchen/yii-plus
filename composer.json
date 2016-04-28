@@ -1,12 +1,11 @@
 {
     "name": "cdcchen/yii-plus",
     "description": "yii plus",
-    "version": "1.0.0",
     "keywords": ["yii2", "shortcut", "yii plus", "yii2 extension"],
     "type": "yii2-extension",
     "homepage": "https://github.com/cdcchen/yii-plus",
     "time": "2015-05-25 17:45:01",
-    "license": "BSD-3-Clause",
+    "license": "BSD-4-Clause",
     "support": {
         "issues": "https://github.com/cdcchen/yii-plus/issues",
         "wiki": "https://github.com/cdcchen/yii-plus/wiki",
