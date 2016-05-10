@@ -62,7 +62,7 @@ function appUser()
 
 /**
  * return the web user identity
- * @return null|\yii\web\IdentityInterface|\common\models\User|\app\models\User
+ * @return null|\yii\web\IdentityInterface|\common\models\User|\common\models\user\User|\app\models\User
  */
 function identity()
 {
@@ -296,5 +296,17 @@ function staticUrl($url)
     if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
         return $url;
     else
-        return $url ? rtrim(alias('@static'), '/') . '/' . ltrim($url, '/') : '';
+        return $url ? rtrim(alias('@staticUrl'), '/') . '/' . ltrim($url, '/') : '';
+}
+
+/**
+ * @param string $url
+ * @return string
+ */
+function cloudUrl($url)
+{
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+        return $url;
+    else
+        return $url ? rtrim(alias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
 }
