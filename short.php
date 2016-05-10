@@ -278,11 +278,31 @@ function buildUrlManager($key, $managers, $current = null)
 }
 
 /**
+ * @param string $alias
+ * @param bool $throwException
+ * @return bool|string
+ * @deprecated
+ */
+function alias($alias, $throwException = true)
+{
+    return \Yii::getAlias($alias, $throwException);
+}
+
+/**
+ * @param string $alias
+ * @param string $path
+ */
+function setAlias($alias, $path)
+{
+    \Yii::setAlias($alias, $path);
+}
+
+/**
  * @param $alias
  * @param bool $throwException
  * @return bool|string
  */
-function alias($alias, $throwException = true)
+function getAlias($alias, $throwException = true)
 {
     return \Yii::getAlias($alias, $throwException);
 }
