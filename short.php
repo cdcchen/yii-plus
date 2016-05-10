@@ -316,7 +316,7 @@ function staticUrl($url)
     if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
         return $url;
     else
-        return $url ? rtrim(alias('@staticUrl'), '/') . '/' . ltrim($url, '/') : '';
+        return $url ? rtrim(getAlias('@staticUrl'), '/') . '/' . ltrim($url, '/') : '';
 }
 
 /**
@@ -328,5 +328,5 @@ function cloudUrl($url)
     if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
         return $url;
     else
-        return $url ? rtrim(alias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+        return $url ? rtrim(getAlias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
 }
