@@ -54,10 +54,34 @@ class User extends \yii\web\User
      * @return mixed
      * @throws InvalidConfigException
      */
+    public function addConfig($key, $value)
+    {
+        if ($this->userConfig instanceof UserConfig) {
+            return $this->userConfig->add($this->id, $key, $value);
+        } else {
+            throw new InvalidConfigException('userConfig component is required');
+        }
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return mixed
+     * @throws InvalidConfigException
+     */
     public function setConfig($key, $value)
     {
         if ($this->userConfig instanceof UserConfig) {
             return $this->userConfig->set($this->id, $key, $value);
+        } else {
+            throw new InvalidConfigException('userConfig component is required');
+        }
+    }
+
+    public function deleteConfig($key)
+    {
+        if ($this->userConfig instanceof UserConfig) {
+            return $this->userConfig->delete($this->id, $key);
         } else {
             throw new InvalidConfigException('userConfig component is required');
         }
