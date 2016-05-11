@@ -10,6 +10,8 @@ namespace yiiplus\web;
 
 use Yii;
 use yii\base\InvalidConfigException;
+use yii\di\Instance;
+use yiiplus\config\UserConfig;
 
 /**
  * Class User
@@ -17,21 +19,47 @@ use yii\base\InvalidConfigException;
  */
 class User extends \yii\web\User
 {
+    /**
+     * @var string|array|UserConfig
+     */
     public $userConfig = 'userConfig';
 
-    public function getConfig($key, $defaultValue = null)
+    public function init()
     {
-        if (Yii::$app->has($this->userConfig))
-            return Yii::$app->get($this->userConfig)->get($this->id, $key, $defaultValue);
-        else
-            throw new InvalidConfigException('userConfig component required');
+        parent::init();
+
+        if ($this->userConfig !== null) {
+            $this->userConfig = Instance::ensure($this->userConfig, UserConfig::className());
+        }
     }
 
+    /**
+     * @param string $key
+     * @param mixed $defaultValue
+     * @return mixed
+     * @throws InvalidConfigException
+     */
+    public function getConfig($key, $defaultValue = null)
+    {
+        if ($this->userConfig instanceof UserConfig) {
+            return $this->userConfig->get($this->id, $key, $defaultValue);
+        } else {
+            throw new InvalidConfigException('userConfig component is required');
+        }
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return mixed
+     * @throws InvalidConfigException
+     */
     public function setConfig($key, $value)
     {
-        if (Yii::$app->has($this->userConfig))
-            return Yii::$app->get($this->userConfig)->set($this->id, $key, $value);
-        else
-            throw new InvalidConfigException('userConfig component required');
+        if ($this->userConfig instanceof UserConfig) {
+            return $this->userConfig->set($this->id, $key, $value);
+        } else {
+            throw new InvalidConfigException('userConfig component is required');
+        }
     }
 }

@@ -35,7 +35,7 @@ class UserConfig extends Component
     /**
      * @var Cache|array|string
      */
-    public $cache = 'cache';
+    public $cache;
 
     /**
      * @throws InvalidConfigException
@@ -43,10 +43,12 @@ class UserConfig extends Component
     public function init()
     {
         parent::init();
-        $this->db = Instance::ensure($this->db, Connection::className());
-        if (!($this->db instanceof Connection)) {
-            throw new InvalidConfigException('UserConfig::db is required.');
+
+        if (empty($this->db)) {
+            throw new InvalidConfigException('UserConfig::db must be set.');
         }
+
+        $this->db = Instance::ensure($this->db, Connection::className());
 
         if ($this->cache !== null) {
             $this->cache = Instance::ensure($this->cache, Cache::className());

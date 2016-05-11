@@ -26,7 +26,7 @@ use yii\web\Response;
  * public function actions()
  * {
  *     return [
- *         'error' => ['class' => 'yii\web\ErrorAction'],
+ *         'error' => ['class' => 'yiiplus\web\ErrorAction'],
  *     ];
  * }
  * ```
@@ -99,7 +99,7 @@ class ErrorAction extends Action
             $message = $this->defaultMessage ?: Yii::t('yii', 'An internal server error occurred.');
 
 
-        if (request()->getIsAjax()) {
+        if (Yii::$app->getRequest()->getIsAjax()) {
             $data= [
                 'code' => $exception->getCode(),
                 'name' => $name,
@@ -109,7 +109,7 @@ class ErrorAction extends Action
             if ($exception instanceof HttpException)
                 $data['status'] = $exception->statusCode;
 
-            response()->format = Response::FORMAT_JSON;
+            Yii::$app->getResponse()->format = Response::FORMAT_JSON;
             return $data;
         }
         else
