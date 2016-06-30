@@ -1,8 +1,8 @@
 <?php
 /**
- * @link https://github.com/cdcchen/yii2plus
+ * @link https://github.com/cdcchen/yii-plus
  * @copyright Copyright (c) 2014 24beta.com
- * @license https://github.com/cdcchen/yii2plus/LICENSE.md
+ * @license https://github.com/cdcchen/yii-plus/LICENSE.md
  */
 
 /**
@@ -233,6 +233,11 @@ function htmlA($text, $url = null, $options = [])
 }
 
 
+/**
+ * @param string $name
+ * @param null|mixed $defaultValue
+ * @return null
+ */
 function param($name, $defaultValue = null)
 {
     return isset(\Yii::$app->params[$name]) ? \Yii::$app->params[$name] : $defaultValue;
