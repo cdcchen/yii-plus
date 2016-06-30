@@ -4,9 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f379f91913a462dd38f46e83624f43a",
-    "content-hash": "25fb33e9fff7a217c638978365dd6b52",
-    "packages": [
+    "hash": "5bac48738cd627068283e6fa3f7dca30",
+    "content-hash": "d966ddd0b7f87d596c86adc5b2f7883d",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "bower-asset/jquery",
             "version": "2.2.4",
@@ -404,62 +405,9 @@
             "time": "2016-02-06 00:49:24"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "cdcchen/php-plus",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cdcchen/php-plus.git",
-                "reference": "b452f56f8827ba8ebdb595657a8bc7dd3db9fa5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/cdcchen/php-plus/b452f56f8827ba8ebdb595657a8bc7dd3db9fa5b.zip",
-                "reference": "b452f56f8827ba8ebdb595657a8bc7dd3db9fa5b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "php-lib",
-            "extra": {
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
-                },
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpplus\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Dong Chen",
-                    "email": "cdcchen@gmail.com"
-                }
-            ],
-            "description": "php plus",
-            "homepage": "https://github.com/cdcchen/php-plus",
-            "keywords": [
-                "php plus"
-            ],
-            "time": "2016-03-13 08:27:23"
-        }
-    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "cdcchen/php-plus": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
