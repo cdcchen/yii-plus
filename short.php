@@ -330,3 +330,27 @@ function cloudUrl($url)
     else
         return $url ? rtrim(getAlias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
 }
+
+/**
+ * @param string $url
+ * @return string
+ */
+function resourceUrl($url)
+{
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+        return $url;
+    else
+        return $url ? rtrim(getAlias('@resourceBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+}
+
+/**
+ * @param string $url
+ * @return string
+ */
+function uploadUrl($url)
+{
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+        return $url;
+    else
+        return $url ? rtrim(getAlias('@uploadBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+}

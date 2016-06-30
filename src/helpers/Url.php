@@ -2,9 +2,10 @@
 namespace yiiplus\helpers;
 
 use Yii;
+use yii\helpers\BaseUrl;
 use yii\web\UrlManager;
 
-class Url extends \yii\helpers\BaseUrl
+class Url extends BaseUrl
 {
     public static function toRoute($route, $scheme = false, $urlManager = null)
     {
