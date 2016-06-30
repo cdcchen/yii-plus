@@ -20,7 +20,7 @@ function app()
  */
 function request()
 {
-    return app()->getRequest();
+    return \Yii::$app->getRequest();
 }
 
 /**
@@ -29,7 +29,7 @@ function request()
  */
 function response()
 {
-    return app()->getResponse();
+    return \Yii::$app->getResponse();
 }
 
 /**
@@ -38,7 +38,7 @@ function response()
  */
 function session()
 {
-    return app()->getSession();
+    return \Yii::$app->getSession();
 }
 
 /**
@@ -48,7 +48,7 @@ function session()
  */
 function user()
 {
-    return app()->getUser();
+    return \Yii::$app->getUser();
 }
 
 /**
@@ -57,16 +57,26 @@ function user()
  */
 function appUser()
 {
-    return app()->getUser();
+    return \Yii::$app->getUser();
+}
+
+/**
+ * return the web user identity
+ * @return null|\yii\web\IdentityInterface
+ * @deprecated use userIdentity replace
+ */
+function identity()
+{
+    return \Yii::$app->user->identity;
 }
 
 /**
  * return the web user identity
  * @return null|\yii\web\IdentityInterface|\common\models\User|\common\models\user\User|\app\models\User
  */
-function identity()
+function userIdentity()
 {
-    return app()->user->identity;
+    return \Yii::$app->user->identity;
 }
 
 /**
@@ -75,7 +85,7 @@ function identity()
  */
 function view()
 {
-    return app()->getView();
+    return \Yii::$app->getView();
 }
 
 /**
@@ -85,7 +95,7 @@ function view()
  */
 function db($extra = null)
 {
-    return (empty($extra)) ? app()->getDb() : app()->get('db' . ucfirst($extra));
+    return (empty($extra)) ? \Yii::$app->getDb() : \Yii::$app->get('db' . ucfirst($extra));
 }
 
 /**
@@ -95,7 +105,7 @@ function db($extra = null)
  */
 function cache($extra = null)
 {
-    return (empty($extra)) ? app()->getCache() : app()->get('cache' . ucfirst($extra));
+    return (empty($extra)) ? \Yii::$app->getCache() : \Yii::$app->get('cache' . ucfirst($extra));
 }
 
 /**
@@ -104,7 +114,7 @@ function cache($extra = null)
  */
 function formatter()
 {
-    return app()->getFormatter();
+    return \Yii::$app->getFormatter();
 }
 
 /**
@@ -114,7 +124,7 @@ function formatter()
  */
 function urlManager($extra = null)
 {
-    return (empty($extra)) ? app()->getUrlManager() : app()->get('urlManager' . ucfirst($extra));
+    return (empty($extra)) ? \Yii::$app->getUrlManager() : \Yii::$app->get('urlManager' . ucfirst($extra));
 }
 
 /**
@@ -123,7 +133,7 @@ function urlManager($extra = null)
  */
 function i18n()
 {
-    return app()->getI18n();
+    return \Yii::$app->getI18n();
 }
 
 /**
@@ -133,7 +143,7 @@ function i18n()
  */
 function mailer($extra = null)
 {
-    return (empty($extra)) ? app()->getMailer() : app()->get('mailer' . ucfirst($extra));
+    return (empty($extra)) ? \Yii::$app->getMailer() : \Yii::$app->get('mailer' . ucfirst($extra));
 }
 
 /**
@@ -143,7 +153,7 @@ function mailer($extra = null)
  */
 function authManager()
 {
-    return app()->getAuthManager();
+    return \Yii::$app->getAuthManager();
 }
 
 /**
@@ -152,7 +162,7 @@ function authManager()
  */
 function assetManager()
 {
-    return app()->getAssetManager();
+    return \Yii::$app->getAssetManager();
 }
 
 /**
@@ -161,7 +171,7 @@ function assetManager()
  */
 function security()
 {
-    return app()->getSecurity();
+    return \Yii::$app->getSecurity();
 }
 
 /**
@@ -170,12 +180,7 @@ function security()
  */
 function userConfig()
 {
-    return app()->get('userConfig');
-}
-
-function t($category, $message, $params = [], $language = null)
-{
-    \Yii::t($category, $message, $params, $language);
+    return \Yii::$app->get('userConfig');
 }
 
 /**
@@ -188,7 +193,7 @@ function t($category, $message, $params = [], $language = null)
  * @see decode()
  * @see http://www.php.net/manual/en/function.htmlspecialchars.php
  */
-function hencode($content, $doubleEncode = true)
+function htmlEncode($content, $doubleEncode = true)
 {
     return \yii\helpers\Html::encode($content, $doubleEncode);
 }
@@ -202,7 +207,7 @@ function hencode($content, $doubleEncode = true)
  * See [[renderTagAttributes()]] for details on how attributes are being rendered.
  * @return string the generated image tag
  */
-function img($src, $options = [])
+function htmlImg($src, $options = [])
 {
     return \yii\helpers\Html::img($src, $options);
 }
@@ -222,7 +227,7 @@ function img($src, $options = [])
  * @return string the generated hyperlink
  * @see \yii\helpers\Url::to()
  */
-function a($text, $url = null, $options = [])
+function htmlA($text, $url = null, $options = [])
 {
     return \yii\helpers\Html::a($text, $url, $options);
 }
@@ -230,7 +235,7 @@ function a($text, $url = null, $options = [])
 
 function param($name, $defaultValue = null)
 {
-    return isset(app()->params[$name]) ? app()->params[$name] : $defaultValue;
+    return isset(\Yii::$app->params[$name]) ? \Yii::$app->params[$name] : $defaultValue;
 }
 
 /**
@@ -266,13 +271,15 @@ function aurl($params, $urlManager = null, $scheme = null)
  */
 function buildUrlManager($key, $managers, $current = null)
 {
-    if (!isset($managers[$key]))
+    if (!isset($managers[$key])) {
         throw new InvalidArgumentException();
-    else
+    } else {
         $manager = $managers[$key];
+    }
 
-    if ($key === $current)
+    if ($key === $current) {
         unset($manager['ruleConfig']['host']);
+    }
 
     return $manager;
 }
@@ -313,10 +320,11 @@ function getAlias($alias, $throwException = true)
  */
 function staticUrl($url)
 {
-    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
         return $url;
-    else
+    } else {
         return $url ? rtrim(getAlias('@staticUrl'), '/') . '/' . ltrim($url, '/') : '';
+    }
 }
 
 /**
@@ -325,10 +333,11 @@ function staticUrl($url)
  */
 function cloudUrl($url)
 {
-    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
         return $url;
-    else
+    } else {
         return $url ? rtrim(getAlias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+    }
 }
 
 /**
@@ -337,10 +346,11 @@ function cloudUrl($url)
  */
 function resourceUrl($url)
 {
-    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
         return $url;
-    else
+    } else {
         return $url ? rtrim(getAlias('@resourceBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+    }
 }
 
 /**
@@ -349,8 +359,9 @@ function resourceUrl($url)
  */
 function uploadUrl($url)
 {
-    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED))
+    if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
         return $url;
-    else
+    } else {
         return $url ? rtrim(getAlias('@uploadBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
+    }
 }
