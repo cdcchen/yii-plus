@@ -8,7 +8,6 @@
 
 namespace yiiplus\web;
 
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\di\Instance;
 use yiiplus\config\UserConfig;

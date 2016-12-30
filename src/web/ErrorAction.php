@@ -12,7 +12,6 @@ use yii\base\Action;
 use yii\base\Exception;
 use yii\base\UserException;
 use yii\web\HttpException;
-use yii\web\Response;
 
 /**
  * ErrorAction displays application errors using a specified view.
@@ -57,6 +56,12 @@ class ErrorAction extends Action
      * would be "error", and the corresponding view file would be "views/site/error.php".
      */
     public $view;
+
+    /**
+     * @var null|bool|string
+     */
+    public $layout = null;
+
     /**
      * @var string the name of the error when the exception name cannot be determined.
      * Defaults to "Error".
@@ -77,47 +82,49 @@ class ErrorAction extends Action
     public function run()
     {
         if (($exception = Yii::$app->getErrorHandler()->exception) === null) {
-            return '';
+            // action has been invoked not from error handler, but by direct route, so we display '404 Not Found'
+            $exception = new HttpException(404, Yii::t('yii', 'Page not found.'));
         }
 
-        if ($exception instanceof HttpException)
+        if ($exception instanceof HttpException) {
             $code = $exception->statusCode;
-        else
+        } else {
             $code = $exception->getCode();
-
-        if ($exception instanceof Exception)
+        }
+        if ($exception instanceof Exception) {
             $name = $exception->getName();
-        else
+        } else {
             $name = $this->defaultName ?: Yii::t('yii', 'Error');
-
-        if ($code)
+        }
+        if ($code) {
             $name .= " (#$code)";
+        }
 
-        if ($exception instanceof UserException)
+        if ($exception instanceof UserException) {
             $message = $exception->getMessage();
-        else
+        } else {
             $message = $this->defaultMessage ?: Yii::t('yii', 'An internal server error occurred.');
-
+        }
 
         if (Yii::$app->getRequest()->getIsAjax()) {
-            $data= [
-                'code' => $exception->getCode(),
-                'name' => $name,
-                'message' => $message,
-            ];
+            return "$name: $message";
+        } else {
+            if ($this->layout === false) {
+                return $this->controller->renderPartial($this->view ?: $this->id, [
+                    'name' => $name,
+                    'message' => $message,
+                    'exception' => $exception,
+                ]);
+            }
 
-            if ($exception instanceof HttpException)
-                $data['status'] = $exception->statusCode;
-
-            Yii::$app->getResponse()->format = Response::FORMAT_JSON;
-            return $data;
-        }
-        else
+            if (is_string($this->layout) && $this->layout) {
+                $this->controller->layout = $this->layout;
+            }
             return $this->controller->render($this->view ?: $this->id, [
-                'code' => $code,
                 'name' => $name,
                 'message' => $message,
                 'exception' => $exception,
             ]);
+        }
     }
 }
