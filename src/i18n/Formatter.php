@@ -9,8 +9,18 @@
 namespace yiiplus\i18n;
 
 
+/**
+ * Class Formatter
+ * @package yiiplus\i18n
+ */
 class Formatter extends \yii\i18n\Formatter
 {
+    /**
+     * @param string|integer|float $value value in bytes to be formatted.
+     * @param integer $decimals the number of digits after the decimal point.
+     * @param bool $uppercase
+     * @return float|int|string
+     */
     public function asSizeNumber($value, $decimals = 0, $uppercase = false)
     {
         $position = 0;
@@ -29,24 +39,34 @@ class Formatter extends \yii\i18n\Formatter
             case 0:
                 return $value;
             case 1:
-                $value .= $uppercase ? 'K' : 'k'; break;
+                $value .= $uppercase ? 'K' : 'k';
+                break;
             case 2:
-                $value .= $uppercase ? 'M' : 'm'; break;
+                $value .= $uppercase ? 'M' : 'm';
+                break;
             case 3:
-                $value .= $uppercase ? 'G' : 'g'; break;
+                $value .= $uppercase ? 'G' : 'g';
+                break;
             case 4:
-                $value .= $uppercase ? 'T' : 't'; break;
+                $value .= $uppercase ? 'T' : 't';
+                break;
             default:
-                $value .= $uppercase ? 'P' : 'p'; break;
+                $value .= $uppercase ? 'P' : 'p';
+                break;
         }
 
         return $value;
     }
 
+    /**
+     * @param string $value
+     * @return string
+     */
     public function asPlain($value)
     {
-        if ($value === null)
+        if ($value === null) {
             return $this->nullDisplay;
+        }
 
         $value = strip_tags($value);
 
