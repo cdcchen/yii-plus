@@ -2,8 +2,8 @@
 
 namespace yiiplus\behaviors;
 
-use yii\db\BaseActiveRecord;
 use yii\behaviors\AttributeBehavior;
+use yii\db\BaseActiveRecord;
 
 class CreatedTimeAndIPBehavior extends AttributeBehavior
 {
@@ -46,7 +46,7 @@ class CreatedTimeAndIPBehavior extends AttributeBehavior
     public function evaluateAttributes($event)
     {
         if (!empty($this->attributes[$event->name])) {
-            $attributes = (array) $this->attributes[$event->name];
+            $attributes = (array)$this->attributes[$event->name];
             $value = $this->getValue($event);
             foreach ($attributes as $index => $attribute) {
                 if (is_string($attribute)) {
@@ -62,6 +62,10 @@ class CreatedTimeAndIPBehavior extends AttributeBehavior
      */
     private static function getUserIP()
     {
+        if (PHP_SAPI === 'cli') {
+            return '127.0.0.1';
+        }
+
         return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
     }
 }
