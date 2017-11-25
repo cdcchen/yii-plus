@@ -10,14 +10,14 @@ namespace yiiplus\i18n;
 
 
 use Yii;
-use yii\base\Object;
+use yii\base\BaseObject;
 
 
 /**
  * Class DateTimeFormatter
  * @package common\models
  */
-class DateTimeFormatter extends Object
+class DateTimeFormatter extends BaseObject
 {
     /**
      * @var \DateTime|int|string

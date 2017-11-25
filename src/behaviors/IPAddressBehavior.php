@@ -34,19 +34,6 @@ class IPAddressBehavior extends AttributeBehavior
     }
 
     /**
-     * Updates a ip address attribute to the current ip address.
-     *
-     * ```php
-     * $model->touch('last_ip');
-     * ```
-     * @param string $attribute the name of the attribute to update.
-     */
-    public function touch($attribute)
-    {
-        $this->owner->updateAttributes(array_fill_keys((array) $attribute, $this->getValue(null)));
-    }
-
-    /**
      * Returns the user IP address.
      * @return string user IP address. Null is returned if the user IP address cannot be detected.
      */
