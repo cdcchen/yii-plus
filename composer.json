@@ -24,14 +24,14 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=7.1.0"
   },
   "require-dev": {
     "yiisoft/yii2": "^2.0.13"
   },
   "autoload": {
     "psr-4": {
-      "yiiplus\\": "src/"
+      "yii\\plus\\": "src/"
     }
   },
   "extra": {
@@ -44,7 +44,7 @@
       }
     },
     "branch-alias": {
-      "dev-master": "2.1.x-dev"
+      "dev-master": "3.0.x-dev"
     }
   }
 }
