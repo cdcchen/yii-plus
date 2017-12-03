@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yiiplus\web;
+namespace yii\plus\web;
 
 use Yii;
 use yii\base\Action;

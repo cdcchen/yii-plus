@@ -6,7 +6,7 @@
  * Time: 下午6:28
  */
 
-namespace yiiplus\config;
+namespace yii\plus\config;
 
 
 use yii\base\Component;

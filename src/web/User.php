@@ -6,7 +6,7 @@
  * Time: 下午7:42
  */
 
-namespace yiiplus\web;
+namespace yii\plus\web;
 
 use yii\base\InvalidConfigException;
 use yii\di\Instance;

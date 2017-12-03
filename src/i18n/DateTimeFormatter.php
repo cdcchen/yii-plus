@@ -6,7 +6,7 @@
  * Time: 15:15
  */
 
-namespace yiiplus\i18n;
+namespace yii\plus\i18n;
 
 
 use Yii;

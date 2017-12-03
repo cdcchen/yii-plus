@@ -1,5 +1,5 @@
 <?php
-namespace yiiplus\helpers;
+namespace yii\plus\helpers;
 
 use Yii;
 use yii\helpers\BaseUrl;

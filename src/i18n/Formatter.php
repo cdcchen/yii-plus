@@ -6,7 +6,7 @@
  * Time: 下午1:23
  */
 
-namespace yiiplus\i18n;
+namespace yii\plus\i18n;
 
 
 /**
