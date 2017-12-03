@@ -43,7 +43,7 @@ function session()
 
 /**
  * Returns the user object.
- * @return \yii\web\User | \yiiplus\web\User the application instance
+ * @return \yii\web\User | \yii\plus\web\User the application instance
  * @deprecated
  */
 function user()
@@ -53,7 +53,7 @@ function user()
 
 /**
  * Returns the user object.
- * @return \yii\web\User | \yiiplus\web\User the application instance
+ * @return \yii\web\User | \yii\plus\web\User the application instance
  */
 function appUser()
 {
@@ -110,7 +110,7 @@ function cache($extra = null)
 
 /**
  * Returns the formatter component.
- * @return \yii\i18n\Formatter|\yiiplus\i18n\Formatter the formatter application component.
+ * @return \yii\i18n\Formatter|\yii\plus\i18n\Formatter the formatter application component.
  */
 function formatter()
 {
@@ -176,7 +176,7 @@ function security()
 
 /**
  * Returns the userConfig component.
- * @return \yiiplus\config\UserConfig the userConfig application component.
+ * @return \yii\plus\config\UserConfig the userConfig application component.
  */
 function userConfig()
 {

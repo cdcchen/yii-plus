@@ -18,7 +18,7 @@ use yii\di\Instance;
 
 /**
  * Class UserConfig
- * @package yiiplus\config
+ * @package yii\plus\config
  */
 class UserConfig extends Component
 {

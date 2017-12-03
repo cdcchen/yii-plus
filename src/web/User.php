@@ -10,11 +10,11 @@ namespace yii\plus\web;
 
 use yii\base\InvalidConfigException;
 use yii\di\Instance;
-use yiiplus\config\UserConfig;
+use yii\plus\config\UserConfig;
 
 /**
  * Class User
- * @package yiiplus\web
+ * @package yii\plus\web
  */
 class User extends \yii\web\User
 {

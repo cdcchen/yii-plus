@@ -11,7 +11,7 @@ namespace yii\plus\i18n;
 
 /**
  * Class Formatter
- * @package yiiplus\i18n
+ * @package yii\plus\i18n
  */
 class Formatter extends \yii\i18n\Formatter
 {

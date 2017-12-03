@@ -25,7 +25,7 @@ use yii\web\HttpException;
  * public function actions()
  * {
  *     return [
- *         'error' => ['class' => 'yiiplus\web\ErrorAction'],
+ *         'error' => ['class' => 'yii\plus\web\ErrorAction'],
  *     ];
  * }
  * ```
