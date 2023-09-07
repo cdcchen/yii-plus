@@ -325,7 +325,7 @@ function getAlias($alias, $throwException = true)
  */
 function staticUrl($url)
 {
-    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
+    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL)) {
         return $url;
     } else {
         return $url ? rtrim(getAlias('@staticUrl'), '/') . '/' . ltrim($url, '/') : '';
@@ -338,7 +338,7 @@ function staticUrl($url)
  */
 function cloudUrl($url)
 {
-    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
+    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL)) {
         return $url;
     } else {
         return $url ? rtrim(getAlias('@cloudBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
@@ -351,7 +351,7 @@ function cloudUrl($url)
  */
 function resourceUrl($url)
 {
-    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
+    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL)) {
         return $url;
     } else {
         return $url ? rtrim(getAlias('@resourceBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
@@ -364,7 +364,7 @@ function resourceUrl($url)
  */
 function uploadUrl($url)
 {
-    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED)) {
+    if (defined('FILTER_FLAG_SCHEME_REQUIRED') && filter_var($url, FILTER_VALIDATE_URL)) {
         return $url;
     } else {
         return $url ? rtrim(getAlias('@uploadBaseUrl'), '/') . '/' . ltrim($url, '/') : '';
